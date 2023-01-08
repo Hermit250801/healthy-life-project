@@ -13,18 +13,22 @@ import "react-datepicker/dist/react-datepicker.css"
 // ** Toast
 import { Toaster } from "react-hot-toast"
 
+import { GoogleAuthContextProvider } from "./utils/context/GoogleAuthContext"
+
 const LazyApp = lazy(() => import("./App"))
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <Suspense fallback={<h1>Loading...</h1>}>
-          <LazyApp />
-          <Toaster position={"top-right"} toastOptions={{ className: "react-hot-toast" }} />
-        </Suspense>
-      </Provider>
-    </BrowserRouter>
+    <GoogleAuthContextProvider>
+      <BrowserRouter>
+        <Provider store={store}>
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <LazyApp />
+            <Toaster position={"top-right"} toastOptions={{ className: "react-hot-toast" }} />
+          </Suspense>
+        </Provider>
+      </BrowserRouter>
+    </GoogleAuthContextProvider>
   </React.StrictMode>,
 )

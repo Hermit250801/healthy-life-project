@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react"
 import { Button, Form, FormGroup, Label, Input, DropdownMenu, DropdownItem } from "reactstrap"
 import { useForm, Controller } from "react-hook-form"
 
+import { Link } from "react-router-dom"
+
 //Import types
 import { UserRegisterFormSubmit } from "../../../utils/type"
 
@@ -29,6 +31,7 @@ function RegisterForm() {
   const onSubmit = (data: UserRegisterFormSubmit) => {
     console.log("Form data: ", data)
   }
+
   return (
     <div className="form-wrapper">
       <div className="form-register-wrapper">
@@ -116,21 +119,21 @@ function RegisterForm() {
               Đăng kí
             </Button>
             <span className="mt-2 d-block new-account">
-              <a href="/login" className="forgot-password">
+              <Link to="/login" className="forgot-password">
                 Đã có tài khoản?
-              </a>
+              </Link>
             </span>
 
             <div>
               <p className="policy">
                 Để hiểu thêm về website bạn đồng ý về{" "}
-                <a href="https://discord.com/terms" className="policy-link">
+                <Link to="https://discord.com/terms" className="policy-link">
                   điều khoản dịch vụ
-                </a>{" "}
+                </Link>{" "}
                 và{" "}
-                <a href="https://discord.com/privacy" className="policy-link">
+                <Link to="https://discord.com/privacy" className="policy-link">
                   chính sách
-                </a>
+                </Link>
               </p>
             </div>
           </Form>

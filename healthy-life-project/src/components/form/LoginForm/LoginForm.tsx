@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap"
 import { useForm, Controller } from "react-hook-form"
+import { Link } from "react-router-dom"
 
 //Import types
 import { UserLoginFormSubmit } from "../../../utils/type"
@@ -12,6 +13,9 @@ import * as Yup from "yup"
 
 //Import image
 import Logo from "../../../assets/images/healthy-picture.jpg"
+
+import GoogleButton from "react-google-button"
+import { GoogleAuth } from "../../../utils/context/GoogleAuthContext"
 
 export default function LoginForm() {
   const {
@@ -28,6 +32,16 @@ export default function LoginForm() {
 
   const onSubmit = (data: UserLoginFormSubmit) => {
     console.log("Form data: ", data)
+  }
+
+  const { googleSignIn, user } = GoogleAuth()
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn()
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -73,19 +87,21 @@ export default function LoginForm() {
                 render={({ field }) => <Input type="password" id="password" className="form-login-input" {...field} />}
               />
 
-              <a href="" className="forgot-password">
+              <Link to={"/"} className="forgot-password">
                 Quên mật khẩu?
-              </a>
+              </Link>
             </FormGroup>
 
             <Button type="submit" className="w-100 btn-submit">
               Đăng nhập
             </Button>
+            <span className="new-account">Hoặc</span>
+            <GoogleButton className="w-100" onClick={handleGoogleSignIn} />
             <span className="mt-2 d-block new-account">
               Cần tạo một tài khoản?{" "}
-              <a href="/register" className="forgot-password">
+              <Link to="/register" className="forgot-password">
                 Đăng kí
-              </a>
+              </Link>
             </span>
           </Form>
         </div>

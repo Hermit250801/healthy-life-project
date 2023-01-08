@@ -1,25 +1,25 @@
 {
-    "semi": false,
-    "trailingComma": "all",
-    "singleQuote": false,
-    "jsxSingleQuote": false,
-    "printWidth": 120,
-    "tabWidth": 2,
+  "semi": false,
+  "trailingComma": "all",
+  "singleQuote": false,
+  "jsxSingleQuote": false,
+  "printWidth": 120,
+  "tabWidth": 2,
 
-    "bracketSpacing": true,
-    "jsxBracketSameLine": false,
-    "import/no-duplicates": [
-        "error",
-        {
-            "considerQueryString": true
-        }
-    ],
-    "arrowParens": "avoid",
-    "endOfLine": "auto",
-    "htmlWhitespaceSensitivity": "css",
-    "insertPragma": false,
-    "proseWrap": "preserve",
-    "quoteProps": "as-needed",
-    "requirePragma": false,
-    "useTabs": false
+  "bracketSpacing": true,
+  "jsxBracketSameLine": false,
+  "import/no-duplicates": [
+    "error",
+    {
+      "considerQueryString": true
+    }
+  ],
+  "arrowParens": "avoid",
+  "endOfLine": "auto",
+  "htmlWhitespaceSensitivity": "css",
+  "insertPragma": false,
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+  "requirePragma": false,
+  "useTabs": false
 }
