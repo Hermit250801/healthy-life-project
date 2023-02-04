@@ -1,0 +1,23 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  font-size: 30px;
+  color: #76b24f;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.logo-img {
+  width: 100px;
+}
+
+.menu-item {
+  &:hover {
+    background-color: #76b24f;
+  }
+}
+
+.menu-item-icon {
+  font-size: 24px;
+}

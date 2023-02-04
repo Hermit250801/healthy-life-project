@@ -96,7 +96,7 @@ export default function LoginForm() {
               Đăng nhập
             </Button>
             <span className="new-account">Hoặc</span>
-            <GoogleButton className="w-100" onClick={handleGoogleSignIn} />
+            <GoogleButton className="w-100" onClick={handleGoogleSignIn} label="Đăng nhập với google" />
             <span className="mt-2 d-block new-account">
               Cần tạo một tài khoản?{" "}
               <Link to="/register" className="forgot-password">
