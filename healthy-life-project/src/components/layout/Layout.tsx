@@ -1,5 +1,5 @@
 import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from "react-pro-sidebar"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link, Outlet, useNavigate } from "react-router-dom"
 import { AiFillDashboard } from "react-icons/ai"
 import { GiDoctorFace } from "react-icons/gi"
@@ -16,6 +16,9 @@ import "../../assets/scss/layout/_index.scss"
 export default function Layout() {
   const { toggleSidebar, toggled } = useProSidebar()
   const navigate = useNavigate()
+  useEffect(() => {
+    navigate("/dashboard")
+  }, [])
   return (
     <div className="d-flex h-100">
       <Sidebar className="h-100" backgroundColor="#000">
