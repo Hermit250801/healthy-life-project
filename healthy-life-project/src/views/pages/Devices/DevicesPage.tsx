@@ -4,64 +4,48 @@ import { ChevronDown, Edit, Trash, Search, Plus } from "react-feather"
 import DataTable from "react-data-table-component"
 import { GiDoctorFace } from "react-icons/gi"
 import "../../../assets/scss/Doctors/_index.scss"
-import DoctorsDetail from "./DoctorsDetail"
+import DevicesDetail from "./DevicesDetail"
+import { TbDeviceWatchStats2 } from "react-icons/tb"
+
+import Select from "react-select"
 
 function DevicesPage() {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isEdit, setIsEdit] = useState(false)
   const accountColumns = [
     {
-      name: "Mã bác sĩ",
+      name: "Mã thiết bị",
       selector: "id",
       minWidth: "150px",
       sortable: true,
     },
     {
-      name: "Tên bác sĩ",
+      name: "Tên thiết bị",
       selector: "name",
       minWidth: "180px",
       sortable: true,
     },
     {
-      name: "Giới tính",
-      selector: "gender",
+      name: "Mô tả",
+      selector: "desc",
       minWidth: "180px",
       sortable: true,
     },
     {
-      name: "Ngày sinh",
-      selector: "birth",
+      name: "MAC",
+      selector: "mac",
       minWidth: "180px",
       sortable: true,
     },
     {
-      name: "Email",
-      selector: "email",
+      name: "Bệnh viện sử dụng",
+      selector: "hospital",
       minWidth: "180px",
       sortable: true,
     },
     {
-      name: "SDT",
-      selector: "phone",
-      minWidth: "180px",
-      sortable: true,
-    },
-    {
-      name: "Khoa",
-      selector: "department",
-      minWidth: "160px",
-      maxWidth: "160px",
-      sortable: true,
-    },
-    {
-      name: "CMND",
-      selector: "identify",
-      minWidth: "150px",
-      maxWidth: "150px",
-      sortable: true,
-      center: true,
-    },
-    {
-      name: "Thiết bị",
-      selector: "device",
+      name: "Trạng thái",
+      selector: "status",
       minWidth: "180px",
       sortable: true,
     },
@@ -77,134 +61,106 @@ function DevicesPage() {
   const fakeData = [
     {
       id: "1",
-      name: "Mai Văn Trường",
-      gender: "Nam",
-      birth: "25/08/2001",
-      email: "mvantruong.dev@gmail.com",
-      department: "Đa khoa",
-      identify: "1234556789",
-      device: "Thiết bị 36",
+      name: "Cảm biến nhịệt version 1",
+      mac: "CC:50:E3:CD:55:E8",
+      hospital: "Bệnh viện 1A",
+      status: <div className="color-primary">Đang họạt động</div>,
+      desc: "Cảm biến nhiệt độ cơ thể người version 1",
       action: (
         <div className="d-flex">
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Edit size={20} />
-              </Button>
-            </>
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Trash size={20} />
-              </Button>
-            </>
+          <>
+            <Button className="btn-icon" color="flat" onClick={() => setIsEdit(true)}>
+              <Edit size={20} />
+            </Button>
+          </>
+          <>
+            <Button className="btn-icon" color="flat">
+              <Trash size={20} />
+            </Button>
+          </>
         </div>
       ),
     },
     {
-      id: "1",
-      name: "Mai Văn Trường",
-      gender: "Nam",
-      birth: "25/08/2001",
-      email: "mvantruong.dev@gmail.com",
-      department: "Đa khoa",
-      identify: "1234556789",
-      device: "Thiết bị 36",
+      id: "2",
+      name: "Cảm biến nhịệt version 1",
+      mac: "CC:50:E3:CD:55:E8",
+      hospital: "Bệnh viện 1A",
+      status: <div className="color-primary">Đang họạt động</div>,
+      desc: "Cảm biến nhiệt độ cơ thể người version 1",
       action: (
         <div className="d-flex">
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Edit size={20} />
-              </Button>
-            </>
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Trash size={20} />
-              </Button>
-            </>
+          <>
+            <Button className="btn-icon" color="flat" onClick={() => setIsEdit(true)}>
+              <Edit size={20} />
+            </Button>
+          </>
+          <>
+            <Button className="btn-icon" color="flat">
+              <Trash size={20} />
+            </Button>
+          </>
         </div>
       ),
     },
     {
-      id: "1",
-      name: "Mai Văn Trường",
-      gender: "Nam",
-      birth: "25/08/2001",
-      email: "mvantruong.dev@gmail.com",
-      department: "Đa khoa",
-      identify: "1234556789",
-      device: "Thiết bị 36",
+      id: "3",
+      name: "Cảm biến nhịệt version 1",
+      mac: "CC:50:E3:CD:55:E8",
+      hospital: "Bệnh viện 1A",
+      status: <div className="color-primary">Đang họạt động</div>,
+      desc: "Cảm biến nhiệt độ cơ thể người version 1",
       action: (
         <div className="d-flex">
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Edit size={20} />
-              </Button>
-            </>
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Trash size={20} />
-              </Button>
-            </>
+          <>
+            <Button className="btn-icon" color="flat" onClick={() => setIsEdit(true)}>
+              <Edit size={20} />
+            </Button>
+          </>
+          <>
+            <Button className="btn-icon" color="flat">
+              <Trash size={20} />
+            </Button>
+          </>
         </div>
       ),
     },
     {
-      id: "1",
-      name: "Mai Văn Trường",
-      gender: "Nam",
-      birth: "25/08/2001",
-      email: "mvantruong.dev@gmail.com",
-      department: "Đa khoa",
-      identify: "1234556789",
-      device: "Thiết bị 36",
+      id: "4",
+      name: "Cảm biến nhịệt version 1",
+      mac: "CC:50:E3:CD:55:E8",
+      hospital: "Bệnh viện 1A",
+      status: <div className="color-primary">Đang họạt động</div>,
+      desc: "Cảm biến nhiệt độ cơ thể người version 1",
       action: (
         <div className="d-flex">
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Edit size={20} />
-              </Button>
-            </>
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Trash size={20} />
-              </Button>
-            </>
+          <>
+            <Button className="btn-icon" color="flat" onClick={() => setIsEdit(true)}>
+              <Edit size={20} />
+            </Button>
+          </>
+          <>
+            <Button className="btn-icon" color="flat">
+              <Trash size={20} />
+            </Button>
+          </>
         </div>
       ),
-    }
+    },
   ]
   
-  const [isOpenModal, setIsOpenModal] = useState(false);
-
   return (
     <Fragment>
       <Card className="m-4 p-0 ">
         <Row className="align-items-center  p-2" style={{ zIndex: 99 }}>
           <Col>
-          <GiDoctorFace className="menu-item-icon" /> Quản lí bác sĩ{" "}
+          <TbDeviceWatchStats2 className="menu-item-icon" /> Quản lí thiết bị
+          </Col>
+          <Col lg={2} md={3} className="mb-1 d-flex justify-content-end">
+            <Select placeholder="Chọn bệnh viện" className="w-100" />
+          </Col>
+          <Col lg={2} md={3} className="mb-1 d-flex justify-content-end">
+            <Select placeholder="Chọn trạng thái" className="w-100" />
           </Col>
           <Col lg={2} md={3} className="mb-1 d-flex justify-content-end">
             {/* Search */}
@@ -240,7 +196,7 @@ function DevicesPage() {
       </Row>
       </Card>
 
-      <DoctorsDetail isOpen={isOpenModal} setIsOpenModal={setIsOpenModal} />
+      <DevicesDetail isOpen={isOpenModal} setIsOpenModal={setIsOpenModal} isEdit={isEdit} setIsEdit={setIsEdit}  />
     </Fragment>
       
   )

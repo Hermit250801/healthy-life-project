@@ -5,64 +5,28 @@ import { ChevronDown, Edit, Trash, Search, Plus } from "react-feather"
 import DataTable from "react-data-table-component"
 import { GiDoctorFace } from "react-icons/gi"
 import "../../../assets/scss/Doctors/_index.scss"
-import DoctorsDetail from "./DoctorsDetail"
+import DoctorsDetail from "./HospitalsDetail"
+import { FaHospital } from "react-icons/fa"
 
 function HospitalsPage() {
+  const [isOpenModal, setIsOpenModal] = useState(false)
+  const [isEdit, setIsEdit] = useState(false)
   const accountColumns = [
     {
-      name: "Mã bác sĩ",
+      name: "STT",
       selector: "id",
       minWidth: "150px",
       sortable: true,
     },
     {
-      name: "Tên bác sĩ",
+      name: "Tên bệnh viện",
       selector: "name",
       minWidth: "180px",
       sortable: true,
     },
     {
-      name: "Giới tính",
-      selector: "gender",
-      minWidth: "180px",
-      sortable: true,
-    },
-    {
-      name: "Ngày sinh",
-      selector: "birth",
-      minWidth: "180px",
-      sortable: true,
-    },
-    {
-      name: "Email",
-      selector: "email",
-      minWidth: "180px",
-      sortable: true,
-    },
-    {
-      name: "SDT",
-      selector: "phone",
-      minWidth: "180px",
-      sortable: true,
-    },
-    {
-      name: "Khoa",
-      selector: "department",
-      minWidth: "160px",
-      maxWidth: "160px",
-      sortable: true,
-    },
-    {
-      name: "CMND",
-      selector: "identify",
-      minWidth: "150px",
-      maxWidth: "150px",
-      sortable: true,
-      center: true,
-    },
-    {
-      name: "Thiết bị",
-      selector: "device",
+      name: "Địa chỉ",
+      selector: "address",
       minWidth: "180px",
       sortable: true,
     },
@@ -78,134 +42,50 @@ function HospitalsPage() {
   const fakeData = [
     {
       id: "1",
-      name: "Mai Văn Trường",
-      gender: "Nam",
-      birth: "25/08/2001",
-      email: "mvantruong.dev@gmail.com",
-      department: "Đa khoa",
-      identify: "1234556789",
-      device: "Thiết bị 36",
+      name: "Bệnh viện 1A",
+      address: "542 Lý Thường Kiệt (số cũ 1A), Phường 7, Quận Tân Bình, TP Hồ Chí Minh",
       action: (
         <div className="d-flex">
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Edit size={20} />
-              </Button>
-            </>
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Trash size={20} />
-              </Button>
-            </>
+          <>
+            <Button className="btn-icon" color="flat" onClick={() => setIsEdit(true)}>
+              <Edit size={20} />
+            </Button>
+          </>
+          <>
+            <Button className="btn-icon" color="flat">
+              <Trash size={20} />
+            </Button>
+          </>
         </div>
       ),
     },
     {
-      id: "1",
-      name: "Mai Văn Trường",
-      gender: "Nam",
-      birth: "25/08/2001",
-      email: "mvantruong.dev@gmail.com",
-      department: "Đa khoa",
-      identify: "1234556789",
-      device: "Thiết bị 36",
+      id: "2",
+      name: "Bệnh viện hạnh phúc",
+      address: "18, Đại lộ Bình Dương, Thành phố Thuận An, Bình Dương, Việt Nam",
       action: (
         <div className="d-flex">
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Edit size={20} />
-              </Button>
-            </>
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Trash size={20} />
-              </Button>
-            </>
+          <>
+            <Button className="btn-icon" color="flat" onClick={() => setIsEdit(true)}>
+              <Edit size={20} />
+            </Button>
+          </>
+          <>
+            <Button className="btn-icon" color="flat">
+              <Trash size={20} />
+            </Button>
+          </>
         </div>
       ),
     },
-    {
-      id: "1",
-      name: "Mai Văn Trường",
-      gender: "Nam",
-      birth: "25/08/2001",
-      email: "mvantruong.dev@gmail.com",
-      department: "Đa khoa",
-      identify: "1234556789",
-      device: "Thiết bị 36",
-      action: (
-        <div className="d-flex">
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Edit size={20} />
-              </Button>
-            </>
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Trash size={20} />
-              </Button>
-            </>
-        </div>
-      ),
-    },
-    {
-      id: "1",
-      name: "Mai Văn Trường",
-      gender: "Nam",
-      birth: "25/08/2001",
-      email: "mvantruong.dev@gmail.com",
-      department: "Đa khoa",
-      identify: "1234556789",
-      device: "Thiết bị 36",
-      action: (
-        <div className="d-flex">
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Edit size={20} />
-              </Button>
-            </>
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Trash size={20} />
-              </Button>
-            </>
-        </div>
-      ),
-    }
   ]
-  
-  const [isOpenModal, setIsOpenModal] = useState(false);
 
   return (
     <Fragment>
       <Card className="m-4 p-0 ">
         <Row className="align-items-center  p-2" style={{ zIndex: 99 }}>
           <Col>
-          <GiDoctorFace className="menu-item-icon" /> Quản lí bác sĩ{" "}
+          <FaHospital className="menu-item-icon" /> Quản lí bệnh viện
           </Col>
           <Col lg={2} md={3} className="mb-1 d-flex justify-content-end">
             {/* Search */}
@@ -241,7 +121,7 @@ function HospitalsPage() {
       </Row>
       </Card>
 
-      <DoctorsDetail isOpen={isOpenModal} setIsOpenModal={setIsOpenModal} />
+      <DoctorsDetail isOpen={isOpenModal} setIsOpenModal={setIsOpenModal} isEdit={isEdit} setIsEdit={setIsEdit} />
     </Fragment>
       
   )

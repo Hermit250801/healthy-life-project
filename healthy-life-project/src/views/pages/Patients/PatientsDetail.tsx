@@ -18,16 +18,25 @@ import {
 import Select from "react-select"
 
 interface Props {
-  isOpen: boolean,
+  isOpen: boolean
   setIsOpenModal: Function
+  isEdit: boolean
+  setIsEdit: Function
 }
 
 function DoctorsDetail(props: Props) {
-  const { isOpen, setIsOpenModal } = props
+  const { isOpen, setIsOpenModal, isEdit, setIsEdit } = props
   return (
     <Form>
-      <Modal isOpen={isOpen} className="modal-dialog-centered modal-lg" backdrop="static">
-        <ModalHeader>Thêm bác sĩ</ModalHeader>
+      <Modal isOpen={isOpen || isEdit} className="modal-dialog-centered modal-lg" backdrop="static">
+        <ModalHeader
+          toggle={() => {
+            setIsOpenModal(!isOpen)
+            setIsEdit(!isEdit)
+          }}
+        >
+          {(isEdit && "Sửa bệnh nhân") || "Thêm bệnh nhân"}
+        </ModalHeader>
         <ModalBody>
           <Row className="pt-1 justify-content-center">
             <Col md={12} xs={12}>
@@ -53,10 +62,10 @@ function DoctorsDetail(props: Props) {
             <Col md={4} xs={12}>
               <FormGroup className="p-2">
                 <Label for="name" className="mb-2">
-                  Tên bác sĩ
+                  Tên bệnh nhân
                   <span className="text-danger">&nbsp;*</span>
                 </Label>
-                <Input id="fullName" name="fullName" />
+                <Input id="fullName" name="fullName" placeholder="Mai Văn Trường" />
               </FormGroup>
               <FormGroup className="p-2">
                 <Label for="gender" className="mb-2">
@@ -93,7 +102,7 @@ function DoctorsDetail(props: Props) {
                   Email
                   <span className="text-danger">&nbsp;*</span>
                 </Label>
-                <Input id="email" name="email" />
+                <Input id="email" name="email" placeholder="mvantruong.dev@gmail.com" />
               </FormGroup>
 
               <FormGroup className="p-2">
@@ -101,7 +110,7 @@ function DoctorsDetail(props: Props) {
                   CMND
                   <span className="text-danger">&nbsp;*</span>
                 </Label>
-                <Input id="cmnd" name="cmnd" />
+                <Input id="cmnd" name="cmnd" placeholder="089201000995" />
               </FormGroup>
             </Col>
 
@@ -111,23 +120,31 @@ function DoctorsDetail(props: Props) {
                   SDT
                   <span className="text-danger">&nbsp;*</span>
                 </Label>
-                <Input id="phone" name="phone" />
+                <Input id="phone" name="phone" placeholder="0368197963" />
               </FormGroup>
               <FormGroup className="p-2">
                 <Label for="department" className="mb-2">
-                  Khoa
+                  Mã bảo hiểm
                   <span className="text-danger">&nbsp;*</span>
                 </Label>
-                <Select placeholder="Chọn khoa" />
+                <Input id="insurance" name="insurance" placeholder="HS4010120878809" />
               </FormGroup>
             </Col>
           </Row>
         </ModalBody>
 
         <ModalFooter>
-          <Button className="btn-primary2" onClick={() => setIsOpenModal(false)}>Thoát</Button>
+          <Button
+            className="btn-primary2"
+            onClick={() => {
+              setIsOpenModal(false)
+              setIsEdit(false)
+            }}
+          >
+            Thoát
+          </Button>
           <Button color="primary" type="submit">
-            Thêm
+            {(isEdit && "Sửa") || "Thêm"}
           </Button>
         </ModalFooter>
       </Modal>

@@ -71,6 +71,14 @@ body {
   background: #555;
 }
 
+.color-disable {
+  color: #787878 !important;
+}
+
+.color-primary {
+  color: #76b24f !important;
+}
+
 .btn-primary {
   border-color: #76b24f!important;
     background-color: #76b24f!important;
@@ -124,4 +132,89 @@ body {
   border: none !important;
   border-radius: 10px !important;
   box-shadow: none !important;
+}
+
+.react-dataTable {
+  min-height: 100% !important;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  
+
+  span {
+    font-size: 24px;
+  }
+}
+
+.react-dataTable {
+  border-radius: 0.5rem;
+
+  .rdt_TableHead {
+    .rdt_TableHeadRow {
+      // padding: 6px 0;
+      // background-color: $table-head-bg;
+      // background-color: transparent;
+      background-color: #f0f6ed;
+      border-bottom: 0;
+      min-height: 0;
+      height: 56px;
+      border-bottom: 1px solid #909090;
+      .rdt_TableCol {
+        padding: 10px;
+
+        &:first-of-type {
+          padding-left: 20px;
+        }
+
+        .rdt_TableCol_Sortable {
+          color: #909090;
+          font-weight: 600;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          letter-spacing: 0;
+          text-align: center;
+          line-height: 1rem;
+
+          &:hover {
+            color: #555;
+          }
+        }
+      }
+    }
+  }
+
+  .rdt_TableBody {
+    .rdt_TableRow {
+      flex: 0 0 auto;
+      min-height: 60px;
+      height: inherit;
+      border-color: #fff;
+      font-size: 14px;
+      align-content: center;
+
+      &:hover {
+        
+        cursor: pointer;
+      }
+
+      .rdt_TableCell {
+        padding: 10px 10px 10px 0px;
+
+        &:first-of-type {
+          padding-left: 20px;
+        }
+      }
+    }
+  }
+
+  .react-paginate {
+    &.separated-pagination {
+      .page-item:first-child .page-link,
+      .page-item:last-child .page-link {
+        border-radius: 50%;
+      }
+    }
+  }
 }

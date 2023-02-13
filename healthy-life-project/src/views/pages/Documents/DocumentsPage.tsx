@@ -4,64 +4,48 @@ import { ChevronDown, Edit, Trash, Search, Plus } from "react-feather"
 import DataTable from "react-data-table-component"
 import { GiDoctorFace } from "react-icons/gi"
 import "../../../assets/scss/Doctors/_index.scss"
-import DoctorsDetail from "./DoctorsDetail"
+import DoctorsDetail from "./DocumentsDetail"
+import { MdSick } from "react-icons/md"
+
+import Select from "react-select"
 
 function DocumentsPage() {
+  const [isOpenModal, setIsOpenModal] = useState(false)
+  const [isEdit, setIsEdit] = useState(false)
   const accountColumns = [
     {
-      name: "Mã bác sĩ",
+      name: "STT",
       selector: "id",
       minWidth: "150px",
       sortable: true,
     },
     {
-      name: "Tên bác sĩ",
-      selector: "name",
+      name: "Bệnh nhân điều trị",
+      selector: "patient",
       minWidth: "180px",
       sortable: true,
     },
     {
-      name: "Giới tính",
-      selector: "gender",
+      name: "Bệnh",
+      selector: "sick",
       minWidth: "180px",
       sortable: true,
     },
     {
-      name: "Ngày sinh",
-      selector: "birth",
+      name: "Bác sĩ theo dõi",
+      selector: "doctor",
       minWidth: "180px",
       sortable: true,
     },
     {
-      name: "Email",
-      selector: "email",
-      minWidth: "180px",
-      sortable: true,
-    },
-    {
-      name: "SDT",
-      selector: "phone",
-      minWidth: "180px",
-      sortable: true,
-    },
-    {
-      name: "Khoa",
-      selector: "department",
-      minWidth: "160px",
-      maxWidth: "160px",
-      sortable: true,
-    },
-    {
-      name: "CMND",
-      selector: "identify",
-      minWidth: "150px",
-      maxWidth: "150px",
-      sortable: true,
-      center: true,
-    },
-    {
-      name: "Thiết bị",
+      name: "Thiết bị theo dõi",
       selector: "device",
+      minWidth: "180px",
+      sortable: true,
+    },
+    {
+      name: "Trạng thái thiết bị",
+      selector: "status",
       minWidth: "180px",
       sortable: true,
     },
@@ -77,134 +61,64 @@ function DocumentsPage() {
   const fakeData = [
     {
       id: "1",
-      name: "Mai Văn Trường",
-      gender: "Nam",
-      birth: "25/08/2001",
-      email: "mvantruong.dev@gmail.com",
-      department: "Đa khoa",
-      identify: "1234556789",
+      patient: "Mai Văn Trường",
+      sick: "Sốt xuất huyết",
+      doctor: "Nguyễn Hoàng Duy",
       device: "Thiết bị 36",
+      status: <div className="color-disable">Đã kết thúc điều trị</div>,
       action: (
         <div className="d-flex">
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Edit size={20} />
-              </Button>
-            </>
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Trash size={20} />
-              </Button>
-            </>
+          <>
+            <Button className="btn-icon" color="flat" onClick={() => setIsEdit(true)}>
+              <Edit size={20} />
+            </Button>
+          </>
+          <>
+            <Button className="btn-icon" color="flat">
+              <Trash size={20} />
+            </Button>
+          </>
         </div>
       ),
     },
     {
-      id: "1",
-      name: "Mai Văn Trường",
-      gender: "Nam",
-      birth: "25/08/2001",
-      email: "mvantruong.dev@gmail.com",
-      department: "Đa khoa",
-      identify: "1234556789",
-      device: "Thiết bị 36",
+      id: "2",
+      patient: "Trần Ngọc Hạ Tiên",
+      sick: "Sốt xuất huyết",
+      doctor: "Nguyễn Quốc Hùng",
+      device: "Thiết bị 10",
+      status: <div className="color-primary">Đang diều trị</div>,
       action: (
         <div className="d-flex">
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Edit size={20} />
-              </Button>
-            </>
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Trash size={20} />
-              </Button>
-            </>
+          <>
+            <Button className="btn-icon" color="flat"  onClick={() => setIsEdit(true)}>
+              <Edit size={20} />
+            </Button>
+          </>
+          <>
+            <Button className="btn-icon" color="flat">
+              <Trash size={20} />
+            </Button>
+          </>
         </div>
       ),
     },
-    {
-      id: "1",
-      name: "Mai Văn Trường",
-      gender: "Nam",
-      birth: "25/08/2001",
-      email: "mvantruong.dev@gmail.com",
-      department: "Đa khoa",
-      identify: "1234556789",
-      device: "Thiết bị 36",
-      action: (
-        <div className="d-flex">
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Edit size={20} />
-              </Button>
-            </>
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Trash size={20} />
-              </Button>
-            </>
-        </div>
-      ),
-    },
-    {
-      id: "1",
-      name: "Mai Văn Trường",
-      gender: "Nam",
-      birth: "25/08/2001",
-      email: "mvantruong.dev@gmail.com",
-      department: "Đa khoa",
-      identify: "1234556789",
-      device: "Thiết bị 36",
-      action: (
-        <div className="d-flex">
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Edit size={20} />
-              </Button>
-            </>
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Trash size={20} />
-              </Button>
-            </>
-        </div>
-      ),
-    }
   ]
-  
-  const [isOpenModal, setIsOpenModal] = useState(false);
-
   return (
     <Fragment>
       <Card className="m-4 p-0 ">
         <Row className="align-items-center  p-2" style={{ zIndex: 99 }}>
           <Col>
-          <GiDoctorFace className="menu-item-icon" /> Quản lí bác sĩ{" "}
+            <MdSick className="menu-item-icon" /> Quản lí bệnh án
+          </Col>
+          <Col lg={2} md={3} className="mb-1 d-flex justify-content-end">
+            <Select placeholder="Chọn bác sĩ điều trị" className="w-100" />
+          </Col>
+          <Col lg={2} md={3} className="mb-1 d-flex justify-content-end">
+            <Select placeholder="Chọn bệnh" className="w-100" />
+          </Col>
+          <Col lg={3} md={4} className="mb-1 d-flex justify-content-end">
+            <Select placeholder="Chọn thiết bị theo dõi" className="w-100" />
           </Col>
           <Col lg={2} md={3} className="mb-1 d-flex justify-content-end">
             {/* Search */}
@@ -224,25 +138,24 @@ function DocumentsPage() {
           </Col>
         </Row>
         <Row style={{ minHeight: "694px" }}>
-        <Col lg={12} md={12} className="mb-50">
-          <DataTable
-            noHeader
-            pagination
-            striped
-            highlightOnHover
-            paginationServer
-            className="react-dataTable hover height-minus230px"
-            columns={accountColumns}
-            data={fakeData}
-            sortIcon={<ChevronDown size={10} />}
-          />
-        </Col>
-      </Row>
+          <Col lg={12} md={12} className="mb-50">
+            <DataTable
+              noHeader
+              pagination
+              striped
+              highlightOnHover
+              paginationServer
+              className="react-dataTable hover height-minus230px"
+              columns={accountColumns}
+              data={fakeData}
+              sortIcon={<ChevronDown size={10} />}
+            />
+          </Col>
+        </Row>
       </Card>
 
-      <DoctorsDetail isOpen={isOpenModal} setIsOpenModal={setIsOpenModal} />
+      <DoctorsDetail isOpen={isOpenModal} setIsOpenModal={setIsOpenModal} isEdit={isEdit} setIsEdit={setIsEdit} />
     </Fragment>
-      
   )
 }
 

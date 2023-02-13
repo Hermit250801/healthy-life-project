@@ -2,66 +2,35 @@ import React, { Fragment, useState } from "react"
 import { Input, Row, Col, Button, Card, UncontrolledTooltip, InputGroupText, InputGroup, Modal, Form } from "reactstrap"
 import { ChevronDown, Edit, Trash, Search, Plus } from "react-feather"
 import DataTable from "react-data-table-component"
-import { GiDoctorFace } from "react-icons/gi"
 import "../../../assets/scss/Doctors/_index.scss"
-import DoctorsDetail from "./DoctorsDetail"
+import DoctorsDetail from "./RulesDetail"
+import { BsFillFileEarmarkRuledFill } from "react-icons/bs"
 
 function RulesPage() {
+  const [isOpenModal, setIsOpenModal] = useState(false)
+  const [isEdit, setIsEdit] = useState(false)
   const accountColumns = [
     {
-      name: "Mã bác sĩ",
+      name: "Mã tập luật",
       selector: "id",
       minWidth: "150px",
       sortable: true,
     },
     {
-      name: "Tên bác sĩ",
+      name: "Tên tập luật",
       selector: "name",
       minWidth: "180px",
       sortable: true,
     },
     {
-      name: "Giới tính",
-      selector: "gender",
+      name: "Mô tả",
+      selector: "desc",
       minWidth: "180px",
       sortable: true,
     },
     {
-      name: "Ngày sinh",
-      selector: "birth",
-      minWidth: "180px",
-      sortable: true,
-    },
-    {
-      name: "Email",
-      selector: "email",
-      minWidth: "180px",
-      sortable: true,
-    },
-    {
-      name: "SDT",
-      selector: "phone",
-      minWidth: "180px",
-      sortable: true,
-    },
-    {
-      name: "Khoa",
-      selector: "department",
-      minWidth: "160px",
-      maxWidth: "160px",
-      sortable: true,
-    },
-    {
-      name: "CMND",
-      selector: "identify",
-      minWidth: "150px",
-      maxWidth: "150px",
-      sortable: true,
-      center: true,
-    },
-    {
-      name: "Thiết bị",
-      selector: "device",
+      name: "Nhiệt độ",
+      selector: "temp",
       minWidth: "180px",
       sortable: true,
     },
@@ -77,134 +46,52 @@ function RulesPage() {
   const fakeData = [
     {
       id: "1",
-      name: "Mai Văn Trường",
-      gender: "Nam",
-      birth: "25/08/2001",
-      email: "mvantruong.dev@gmail.com",
-      department: "Đa khoa",
-      identify: "1234556789",
-      device: "Thiết bị 36",
+      name: "Luật sốt xuất huyết",
+      desc: "Bệnh sốt xuất huyết",
+      temp: "40 độ C",
       action: (
         <div className="d-flex">
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Edit size={20} />
-              </Button>
-            </>
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Trash size={20} />
-              </Button>
-            </>
+          <>
+            <Button className="btn-icon" color="flat" onClick={() => setIsEdit(true)}>
+              <Edit size={20} />
+            </Button>
+          </>
+          <>
+            <Button className="btn-icon" color="flat">
+              <Trash size={20} />
+            </Button>
+          </>
         </div>
       ),
     },
     {
-      id: "1",
-      name: "Mai Văn Trường",
-      gender: "Nam",
-      birth: "25/08/2001",
-      email: "mvantruong.dev@gmail.com",
-      department: "Đa khoa",
-      identify: "1234556789",
-      device: "Thiết bị 36",
+      id: "2",
+      name: "Luật sốt siêu vi",
+      desc: "Bệnh sốt siêu vi",
+      temp: "39 độ C",
       action: (
         <div className="d-flex">
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Edit size={20} />
-              </Button>
-            </>
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Trash size={20} />
-              </Button>
-            </>
+          <>
+            <Button className="btn-icon" color="flat" onClick={() => setIsEdit(true)}>
+              <Edit size={20} />
+            </Button>
+          </>
+          <>
+            <Button className="btn-icon" color="flat">
+              <Trash size={20} />
+            </Button>
+          </>
         </div>
       ),
     },
-    {
-      id: "1",
-      name: "Mai Văn Trường",
-      gender: "Nam",
-      birth: "25/08/2001",
-      email: "mvantruong.dev@gmail.com",
-      department: "Đa khoa",
-      identify: "1234556789",
-      device: "Thiết bị 36",
-      action: (
-        <div className="d-flex">
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Edit size={20} />
-              </Button>
-            </>
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Trash size={20} />
-              </Button>
-            </>
-        </div>
-      ),
-    },
-    {
-      id: "1",
-      name: "Mai Văn Trường",
-      gender: "Nam",
-      birth: "25/08/2001",
-      email: "mvantruong.dev@gmail.com",
-      department: "Đa khoa",
-      identify: "1234556789",
-      device: "Thiết bị 36",
-      action: (
-        <div className="d-flex">
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Edit size={20} />
-              </Button>
-            </>
-            <>
-              <Button
-                className="btn-icon"
-                color="flat"
-              >
-                <Trash size={20} />
-              </Button>
-            </>
-        </div>
-      ),
-    }
   ]
-  
-  const [isOpenModal, setIsOpenModal] = useState(false);
 
   return (
     <Fragment>
       <Card className="m-4 p-0 ">
         <Row className="align-items-center  p-2" style={{ zIndex: 99 }}>
           <Col>
-          <GiDoctorFace className="menu-item-icon" /> Quản lí bác sĩ{" "}
+          <BsFillFileEarmarkRuledFill className="menu-item-icon" /> Quản lí tập luật y tế
           </Col>
           <Col lg={2} md={3} className="mb-1 d-flex justify-content-end">
             {/* Search */}
@@ -240,7 +127,7 @@ function RulesPage() {
       </Row>
       </Card>
 
-      <DoctorsDetail isOpen={isOpenModal} setIsOpenModal={setIsOpenModal} />
+      <DoctorsDetail isOpen={isOpenModal} setIsOpenModal={setIsOpenModal} isEdit={isEdit} setIsEdit={setIsEdit} />
     </Fragment>
       
   )

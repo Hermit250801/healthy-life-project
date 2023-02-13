@@ -35,117 +35,119 @@ function DoctorsDetail(props: Props) {
             setIsEdit(false)
           }}
         >
-          {(isEdit && "Sửa bác sĩ") || "Thêm bác sĩ"}
+          {(isEdit && "Sửa bệnh án") || "Thêm bệnh án"}
         </ModalHeader>
         <ModalBody>
-          <Row className="pt-1 justify-content-center">
-            <Col md={12} xs={12}>
-              <Media className="add-user pk2">
-                <div className="position-relative d-flex justify-content-center">
-                  <img
-                    src={"https://demos.creative-tim.com/argon-design-system-pro/assets/img/faces/team-1.jpg"}
-                    alt="avatar"
-                    height="140"
-                    width="140"
-                    className="modal-avatar"
-                  />
-                  <Button className="edit-profile btn-primary" color="primary">
-                    <Input id="avatar" name="avatar" type="file" hidden accept="image/*" />
-                    <Camera />
-                  </Button>
-                </div>
-              </Media>
-            </Col>
-          </Row>
-
           <Row className="pt-0 justify-content-center">
             <Col md={4} xs={12}>
               <FormGroup className="p-2">
                 <Label for="name" className="mb-2">
-                  Tên bác sĩ
+                  Bệnh nhân
                   <span className="text-danger">&nbsp;*</span>
                 </Label>
-                <Input id="fullName" name="fullName" />
+                <Select placeholder="Chọn bệnh nhân" />
               </FormGroup>
-              <FormGroup className="p-2">
-                <Label for="gender" className="mb-2">
-                  Giới tính
-                  <span className="text-danger">&nbsp;*</span>
-                </Label>
-                <Select
-                  placeholder="Chọn giới tính"
-                  options={[
-                    { value: 1, label: "Nam" },
-                    { vaule: 2, label: "Nữ" },
-                  ]}
-                />
-              </FormGroup>
+            </Col>
 
+            <Col md={4} xs={12}>
               <FormGroup className="p-2">
-                <Label for="device" className="mb-2">
+                <Label for="name" className="mb-2">
+                  Bác sĩ
+                  <span className="text-danger">&nbsp;*</span>
+                </Label>
+                <Select placeholder="Chọn bác sĩ" />
+              </FormGroup>
+            </Col>
+
+            <Col md={4} xs={12}>
+              <FormGroup className="p-2">
+                <Label for="name" className="mb-2">
                   Thiết bị
                   <span className="text-danger">&nbsp;*</span>
                 </Label>
                 <Select placeholder="Chọn thiết bị" />
               </FormGroup>
             </Col>
+          </Row>
+          <Row className="pt-0 justify-content-center">
             <Col md={4} xs={12}>
               <FormGroup className="p-2">
-                <Label for="birth" className="mb-2">
-                  Ngày sinh
+                <Label for="name" className="mb-2">
+                  Trạng thái thiết bị
                   <span className="text-danger">&nbsp;*</span>
                 </Label>
-                <Input type="date" id="birth" name="birth" />
-              </FormGroup>
-              <FormGroup className="p-2">
-                <Label for="email" className="mb-2">
-                  Email
-                  <span className="text-danger">&nbsp;*</span>
-                </Label>
-                <Input id="email" name="email" />
-              </FormGroup>
-
-              <FormGroup className="p-2">
-                <Label for="cmnd" className="mb-2">
-                  CMND
-                  <span className="text-danger">&nbsp;*</span>
-                </Label>
-                <Input id="cmnd" name="cmnd" />
+                <Select placeholder="Chọn trạng thái" />
               </FormGroup>
             </Col>
 
             <Col md={4} xs={12}>
               <FormGroup className="p-2">
-                <Label for="phone" className="mb-2">
-                  SDT
+                <Label for="name" className="mb-2">
+                  Nhiệt độ
                   <span className="text-danger">&nbsp;*</span>
                 </Label>
-                <Input id="phone" name="phone" />
+                <Input type="text" name="temp" />
               </FormGroup>
+            </Col>
+
+            <Col md={4} xs={12}>
               <FormGroup className="p-2">
-                <Label for="department" className="mb-2">
-                  Khoa
+                <Label for="name" className="mb-2">
+                  Chuẩn đoán
                   <span className="text-danger">&nbsp;*</span>
                 </Label>
-                <Select placeholder="Chọn khoa" />
+                <Input type="text" name="diagnose" />
+              </FormGroup>
+            </Col>
+          </Row>
+          <Row className="pt-0 justify-content-center">
+            <Col md={4} xs={12}>
+              <FormGroup className="p-2">
+                <Label for="name" className="mb-2">
+                  Ngày lập bệnh án
+                  <span className="text-danger">&nbsp;*</span>
+                </Label>
+                <Input type="date" id="startDate" name="startDate" />
+              </FormGroup>
+            </Col>
+
+            <Col md={4} xs={12}>
+              <FormGroup className="p-2">
+                <Label for="name" className="mb-2">
+                  Ngày kết bệnh án
+                  <span className="text-danger">&nbsp;*</span>
+                </Label>
+                <Input type="date" id="endDate" name="endDate" />
+              </FormGroup>
+            </Col>
+
+            <Col md={4} xs={12}>
+              <FormGroup className="p-2">
+                <Label for="name" className="mb-2">
+                  Tình trạng bệnh án
+                  <span className="text-danger">&nbsp;*</span>
+                </Label>
+                <Select placeholder="Chọn tình trạng" />
               </FormGroup>
             </Col>
           </Row>
         </ModalBody>
 
         <ModalFooter>
-          <Button
-            className="btn-primary2"
-            onClick={() => {
-              setIsOpenModal(false)
-              setIsEdit(false)
-            }}
-          >
-            Thoát
-          </Button>
-          <Button color="primary" type="submit">
-            {(isEdit && "Sửa") || "Thêm"}
-          </Button>
+          <ModalFooter>
+            <Button
+              className="btn-primary2"
+              onClick={() => {
+                setIsOpenModal(false)
+                setIsEdit(false)
+              }}
+            >
+              Thoát
+            </Button>
+            <Button color="primary" type="submit">
+              {(isEdit && "Sửa") || "Thêm"}
+            </Button>
+          </ModalFooter>
         </ModalFooter>
       </Modal>
     </Form>
